@@ -1,0 +1,102 @@
+---
+title: "Neural Network on Weekly Stock Returns"
+author: "Erin Gregoire"
+date: "December 2024"
+output: html_document
+---
+
+Preprocessing & Exploratory Data Analysis:
+
+```{r}
+library(ISLR2)
+library(neuralnet)
+data(Weekly)
+
+?Weekly
+str(Weekly)
+pairs(Weekly)
+```
+This pairs plot shows the correlation between each of the variables. From the start, we can see that Volume and Yeah have a sizable correlation.
+
+```{r}
+plot(Weekly$Direction, main = "Distribution of Weekly Market Return", ylab = "number of returns", xlab = "Down = Negative Return, Up = Positive Return")
+```
+
+This plot shows the distribution of the response variable of whether the return is positive or negative.
+
+```{r}
+table(Weekly$Direction)
+which(is.na(Weekly) == TRUE) # no missing data
+Weekly <- Weekly[ , -8]
+Weekly <- Weekly[ , -1]
+
+Weekly$Direction <- as.numeric(Weekly$Direction)-1
+
+set.seed(4)
+indis <- sample(1:length(Weekly$Direction), size = (2/3)*length(Weekly$Direction), replace = FALSE)
+train <- Weekly[indis, ]
+test <- Weekly[-indis, ]
+```
+
+Implementing Neural Network:
+
+```{r}
+train_err_store <- c()
+test_err_store <- c()
+for (i in 1:8){
+  weekly.nn <- neuralnet(Direction ~ ., data = train, hidden = i, linear.output = FALSE)
+  
+  nn_pred_train <- predict(weekly.nn, newdata = train)
+  y_hat_train <- round(nn_pred_train)
+  train_err <- length(which(train$Direction != y_hat_train)) / length(y_hat_train)
+  train_err_store <- c(train_err_store, train_err)
+  
+  nn_pred_test <- predict(weekly.nn, newdata = test)
+  y_hat_test <- round(nn_pred_test)
+  test_err <- length(which(test$Direction != y_hat_test)) / length(y_hat_test)
+  test_err_store <- c(test_err_store, test_err)
+}
+
+train_err_store
+test_err_store
+
+plot(train_err_store, type = 'b', col = 'blue', ylim = c(0.3, .52), main = "Neural Network Error Rates", ylab = "Error Rate", xlab = "Number of Neurons in Single Layer")
+lines(test_err_store, col = 'red', type = 'b')
+legend("bottomleft", legend=c("Training", "Test"), fill=c("blue", "red"))
+```
+The model with the lowest test error rate is with 3 neurons in the hidden layer. Although this is not the lowest training error rate, we want to avoid overfitting.
+
+```{r}
+weekly.nn.best <- neuralnet(Direction ~ ., data = train, hidden = 3, linear.output = FALSE)
+plot(weekly.nn.best)
+```
+This graph shows the neural network with the optimal model found to have three neurons in the hidden layer. 
+
+
+Compare to Logistic Regression as a Baseline:
+
+```{r}
+weekly.log <- glm(Direction ~ ., data = train, family = binomial)
+summary(weekly.log)
+
+log_pred_train <- predict(weekly.log, newdata = train, type = "response")
+y_hat_train_log <- round(log_pred_train)
+log_train_err <- length(which(train$Direction != y_hat_train_log)) / length(y_hat_train_log)
+log_train_err
+
+log_pred_test <- predict(weekly.log, newdata = test, type = "response")
+y_hat_test_log <- round(log_pred_test)
+log_test_err <- length(which(test$Direction != y_hat_test_log)) / length(y_hat_test_log)
+log_test_err
+```
+
+Evaluate and Compare:
+
+```{r}
+Model = c('Neural Network', 'Logistic Reg.')
+Train_Error_Rate = c(round(train_err_store[3], 4), round(log_train_err, 4))
+Test_Error_Rate = c(round(test_err_store[3], 4), round(log_test_err, 4))
+Error_Rate_Table <- data.frame(Model, Train_Error_Rate, Test_Error_Rate)
+Error_Rate_Table
+```
+After conducting these two models on the training data, it definitely looks as though the neural network will perform significantly better than the logistic regression. However, the test data for both models perform identically. In terms of model interpretability, the neural network loses significant interpretability with due to its complexity and number of parameters. However, logistic regression is a very interpretable and easy to understand model. The logistic regression model shows that the most important variables in predicting whether the return will be positive or negative is Lag2 which is the percentage of return for the 2 previous weeks. Overall, I believe that logistic regression is a better model for this problem due to equivalent performance and significantly better model interpretability. 
