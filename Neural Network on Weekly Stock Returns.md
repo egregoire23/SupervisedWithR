@@ -1,6 +1,6 @@
 Neural Network on Weekly Stock Returns
 ================
-Erin Gregoire
+Erin Gregoire,
 December 2024
 
 Preprocessing & Exploratory Data Analysis:
@@ -45,6 +45,7 @@ pairs(Weekly)
 ```
 
 ![](Graphs&Images/Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
 This pairs plot shows the correlation between each of the variables.
 From the start, we can see that Volume and Yeah have a sizable
 correlation.
@@ -123,6 +124,7 @@ legend("bottomleft", legend=c("Training", "Test"), fill=c("blue", "red"))
 ```
 
 ![](Graphs&Images/Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
 The model with the lowest test error rate is with 3 neurons in the
 hidden layer. Although this is not the lowest training error rate, we
 want to avoid overfitting.
