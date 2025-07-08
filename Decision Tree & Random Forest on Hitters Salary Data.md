@@ -5,7 +5,7 @@ November 2024
 
 This project will consider the Hitters Salary data. Using a Regression
 tree and Random Forest to predict salary, the purpose is to interpet
-which features players should focus on to increase their salary.
+which features should players focus on to increase their salary.
 
 Preprocessing & Exploratory Data Analysis:
 
@@ -77,7 +77,7 @@ hitters <- na.omit(Hitters)
 hist(hitters$Salary, xlab = "Salary", main = "Distribution of Salary in the MLB")
 ```
 
-![](Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 Taking a quick look at the Salary to get a feel for the response
 variable shows that the distribution is highly skewed.
 
@@ -86,7 +86,7 @@ hitters$Salary <- log(hitters$Salary)
 hist(hitters$Salary, xlab = "Log Transformation of Salary", main = "Distribution of Log Salary in the MLB")
 ```
 
-![](Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 A log transformation of the salary field was completed so that the
 response variable begins to resemble a normal bell curve distribution.
 
@@ -107,7 +107,7 @@ plot(fit.hitters, branch = .3, compress = T, uniform = TRUE, margin = .1, main =
 text(fit.hitters, cex = .5)
 ```
 
-![](Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 This graph shows the original unpruned regression tree to predict salary
 on the Hitters Data. It is very messy and difficult to interpret.
 
@@ -206,9 +206,9 @@ plot(pruned.hitters, compress = T, uniform = TRUE, margin = .1, main = "Pruned T
 text(pruned.hitters, cex = .5)
 ```
 
-![](Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 This plot shows the tree after it has been pruned. It is much cleaner
-and easier to interpret with less variables.
+and easier to interpret with fewer variables.
 
 ``` r
 pred_train <- predict(pruned.hitters, newdata = train)
@@ -275,20 +275,20 @@ importance(rf.hitters)
 varImpPlot(rf.hitters, main = "Variable Importance to Predict Hitters' Salary")
 ```
 
-![](Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 Based on the variable importance table and plot, there are three main
-groupings that variables fall into. The first chunk that categorizes the
-most important variables are CHits, CAtBat, CRuns, CRBI and CWalks. All
+groupings that the variables fall into. The first chunk that categorizes the
+most important variables is CHits, CAtBat, CRuns, CRBI, and CWalks. All
 five of these variables are related to how well a baseball player
-performed in their overall career. The second grouping of variables are
-the next most important including CHmRun, Walks, Hits, AtBat, Runs, RBI,
+performed in their overall career. The second grouping of variables is
+the next most important, including CHmRun, Walks, Hits, AtBat, Runs, RBI,
 and Years. The majority of these are again related to a player’s
 performance, but looking only at one year of their play history rather
-than their career as a whole. The last group of variables are what are
-deemed the least important although they may still provide relevant data
+than their career as a whole. The last group of variables is what is
+deemed the least important, although they may still provide relevant data
 for assisting predictions. These variables include HmRun, PutOuts,
 Assists, Errors, Division, NewLeague, and League. Of these, the last
-three variables especially seem to not be important to predicting
+three variables especially seem not to be important to predicting
 salary. This means that where a player plays (league, division) are the
 least characterizing features that relate to how much the player will
 earn.
@@ -297,8 +297,8 @@ If a player wants to increase their statistics to work towards a higher
 salary, they should focus on their performance during each season. High
 performance during a single season is categorized by the second most
 important grouping on the variable importance plot. Each season’s
-performance forms the player’s overall performance, which contain the
-most important factors at increasing salary.
+performance forms the player’s overall performance, which contains the
+most important factors in increasing salary.
 
 Evaluating and Interpreting Results:
 
@@ -320,7 +320,7 @@ on the training data and 7 percent improvement on the test data. The
 final pruned tree found that the most important variables are CRuns,
 Runs, AtBat, CAtBat, and CRBI. Random Forest also found these variables
 to be of importance, although they were characterized by different
-levels of importance that in the decision tree. It also appears the
+levels of importance than in the decision tree. It also appears the
 Random Forest found more variables to be important than did CART, which
 may be one of the reasons why Random Forest drastically outperformed
 CART. One thing that stood out was the incredibly low MSE for Random
