@@ -44,7 +44,7 @@ str(Weekly)
 pairs(Weekly)
 ```
 
-![](Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](Graphs&Images/Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 This pairs plot shows the correlation between each of the variables.
 From the start, we can see that Volume and Yeah have a sizable
 correlation.
@@ -53,7 +53,7 @@ correlation.
 plot(Weekly$Direction, main = "Distribution of Weekly Market Return", ylab = "number of returns", xlab = "Down = Negative Return, Up = Positive Return")
 ```
 
-![](Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](Graphs&Images/Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 This plot shows the distribution of the response variable of whether the
 return is positive or negative.
@@ -122,7 +122,7 @@ lines(test_err_store, col = 'red', type = 'b')
 legend("bottomleft", legend=c("Training", "Test"), fill=c("blue", "red"))
 ```
 
-![](Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](Graphs&Images/Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 The model with the lowest test error rate is with 3 neurons in the
 hidden layer. Although this is not the lowest training error rate, we
 want to avoid overfitting.
