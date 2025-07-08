@@ -78,6 +78,7 @@ hist(hitters$Salary, xlab = "Salary", main = "Distribution of Salary in the MLB"
 ```
 
 ![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
 Taking a quick look at the Salary to get a feel for the response
 variable shows that the distribution is highly skewed.
 
@@ -87,6 +88,7 @@ hist(hitters$Salary, xlab = "Log Transformation of Salary", main = "Distribution
 ```
 
 ![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
 A log transformation of the salary field was completed so that the
 response variable begins to resemble a normal bell curve distribution.
 
@@ -276,6 +278,7 @@ varImpPlot(rf.hitters, main = "Variable Importance to Predict Hitters' Salary")
 ```
 
 ![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
 Based on the variable importance table and plot, there are three main
 groupings that the variables fall into. The first chunk that categorizes the
 most important variables is CHits, CAtBat, CRuns, CRBI, and CWalks. All
