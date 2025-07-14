@@ -5,7 +5,7 @@ October 2024
 
 Principal Components Analysis is a strong machine learning model for
 both supervised and unsupervised learning. In this mini-project, I use
-PCA to classify genuine verses counterfeit bank notes.
+PCA to classify genuine versus counterfeit bank notes.
 
 Data Preprocessing:
 
@@ -34,7 +34,7 @@ gen.var.expl
 fviz_pca_biplot(gen.pc, title = "Genuine Swiss Bank Notes - PCA", xlab = "PC1 Scores (36% var expl)", ylab = "PC2 Scores (28% var expl)")
 ```
 
-![](Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](Graphs&Images/Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 This graph features the variables on the first two principal components.
 Likely, height.right, height.left, and length are correlated.
@@ -42,7 +42,7 @@ Height.right and height.left have a relatively high degree of variance
 as they travel along pc1, indicated by having longer arrows. It is
 possible that observations 1, 5, and 6 are outliers. It is important to
 note that this graph only shows the first two principal components,
-which only captures about 64% of the genuine bank note data. A true
+which only capture about 64% of the genuine bank note data. A true
 majority of the data is not captured until principal component 3 is
 included.
 
@@ -71,9 +71,9 @@ cou.var.expl
 fviz_pca_biplot(cou.pc, title = "Counterfeit Swiss Bank Notes - PCA", xlab = "PC1 Scores (32% var expl)", ylab = "PC2 Scores (29% var expl)")
 ```
 
-![](Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](Graphs&Images/Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-The PCA of the counterfeit banks notes, at first looks similar to the
+The PCA of the counterfeit banknotes, at first looks similar to the
 genuine banknotes when comparing the importance of components and that
 the variance is best explained over three principal components. Looking
 at the graph of counterfeit banknotes, the height.left and height.right
@@ -83,7 +83,7 @@ the diagonal variable appears to have a low degree of variance due to
 the shortened arrow, and therefore less influence on the principal
 components.
 
-Fitting PCA on Combine Swiss Bank Notes:
+Fitting PCA on Combined Swiss Bank Notes:
 
 ``` r
 # variable where 0 represents genuine and 1 represents counterfeit
@@ -114,7 +114,7 @@ full.var.expl
 fviz_pca_biplot(full.pc, title = "PCA of all Swiss Bank Notes", label = 'var', habillage = label_variable, xlab = "PC1 Scores (49% var expl)", ylab = "PC2 Scores (21% var expl)")
 ```
 
-![](Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](Graphs&Images/Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 This biplot shows the genuine bank notes in red and the counterfeit bank
 notes in blue. The genuine and counterfeit bank notes have created their
@@ -122,9 +122,9 @@ own separate clusters. The genuine bank notes have a stronger
 association with diagonal and length, meaning that these variables are
 better at predicting the genuine bank notes. This is interesting as
 diagonal did not seem to be a very important indicator when looking a
-the PCA of only genuine bank note. The pairs inner.lower and
+the PCA of only genuine bank notes. The pair's inner.lower and
 inner.upper, as well as height.left and height.left appear to be
-correlated with each other. It is interesting that the inner.lower and
+correlated with each other. It is interesting that the inner.lower, and
 inner.upper are showing a positive correlation here because they had a
 very strong negative correlation in the PCA of only counterfeit bank
 notes. Also, these four predictors appear to be associated with the
@@ -139,14 +139,14 @@ score.plot <- ggplot(dats, aes(PC1, PC2, color = label_variable, shape = label_v
 score.plot + labs(title = "Score Plot of Swiss Bank Notes", x = "PC1 Scores (49% var expl)", y = "PC2 Scores (21% var expl)")
 ```
 
-![](Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](Graphs&Images/Principal-Components-Analysis-on-Swiss-Bank-Notes_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 In this score plot, we see that genuine bank notes are shown in red and
 counterfeit bank notes are in blue. The genuine and counterfeit bank
 notes have created clusters with their own respective category. We can
-see that a few of the genuine bank notes are falling closely to the
+see that a few of the genuine bank notes are falling close to the
 counterfeit bank notes, which indicates that their properties may be
-more similar to the counterfeit bank notes and my lead these genuine
+more similar to the counterfeit bank notes and may lead these genuine
 notes to be categorized incorrectly as counterfeit. Since there is such
 a distinction between these two types of notes, it shows that PCA is an
-effective model for determining the genuinity of Swiss bank notes.
+effective model for determining the genuineness of Swiss bank notes.
