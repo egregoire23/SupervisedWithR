@@ -96,7 +96,7 @@ As expected, the training error rate is lower than the test error rate
 for both the LDA and QDA models. It is interesting to see that the LDA
 and QDA both had the same training error rate. However, the QDA went on
 to perform better than the LDA with the test data, which is consistent
-with the traditional trends of discriminate analysis. For the seeds
+with the traditional trends of discriminant analysis. For the seeds
 data, the QDA is the optimal model for predicting the variety of wheat
 seeds.
 
@@ -122,7 +122,7 @@ ggplot(seeds, aes(Kernal_Length, Compactness, color = Variety)) +
   labs(title = "LDA Decision Boundary")
 ```
 
-![](Discriminant-Analysis-on-Seeds-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](Graphs&Images/Discriminant-Analysis-on-Seeds-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 This graph shows the decision boundaries created when LDA classifies the
 variety of wheat seeds. Overall, the boundaries seem relatively accurate
@@ -142,10 +142,10 @@ ggplot(seeds, aes(Kernal_Length, Compactness, color = Variety)) +
   labs(title = "QDA Decision Boundary")
 ```
 
-![](Discriminant-Analysis-on-Seeds-Data_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](Graphs&Images/Discriminant-Analysis-on-Seeds-Data_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-The decision boundaries for the QDA look similarly to the LDA model
-which is expected as they both have similar error rates. Overall, these
+The decision boundaries for the QDA look similar to the LDA model,
+which is expected, as they both have similar error rates. Overall, these
 decision boundaries also seem reasonable and relatively accurate. The
 boundaries do well at separating the three varieties with the exception
 of outliers, as well as the fact that the categories overlap slightly.
