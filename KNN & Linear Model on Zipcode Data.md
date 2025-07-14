@@ -3,7 +3,7 @@ KNN & Linear Model on Zipcode Data
 Erin Gregoire,
 September 2024
 
-To classify zipcodes, I constuct a k-Nearest-Neighbor and Linear Model.
+To classify zipcodes, I constructed a k-Nearest-Neighbor and Linear Model.
 In this mini-project, I demonstrate my skills working with these two
 classic models and provide a comparative analysis based on their
 performance with the zipcode data.
@@ -110,7 +110,7 @@ axis(1, at=kk, labels = TRUE, tick = TRUE)
 legend("topleft", legend=c("Training", "Test"), fill=c("blue", "red"))
 ```
 
-![](KNN---Linear-Model-on-Zipcode-Data_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](Graphs&Images/KNN---Linear-Model-on-Zipcode-Data_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 The graph shows the misclassification rate for the values of k for the
 training data (blue) and the test data (red). As expected, the training
