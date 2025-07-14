@@ -4,7 +4,7 @@ Erin Gregoire,
 November 2024
 
 This project will consider the Hitters Salary data. Using a Regression
-tree and Random Forest to predict salary, the purpose is to interpet
+Tree and Random Forest to predict salary, the purpose is to interpret
 which features should players focus on to increase their salary.
 
 Preprocessing & Exploratory Data Analysis:
@@ -77,7 +77,7 @@ hitters <- na.omit(Hitters)
 hist(hitters$Salary, xlab = "Salary", main = "Distribution of Salary in the MLB")
 ```
 
-![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+(Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 Taking a quick look at the Salary to get a feel for the response
 variable shows that the distribution is highly skewed.
@@ -109,7 +109,7 @@ plot(fit.hitters, branch = .3, compress = T, uniform = TRUE, margin = .1, main =
 text(fit.hitters, cex = .5)
 ```
 
-![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+(Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 This graph shows the original unpruned regression tree to predict salary
 on the Hitters Data. It is very messy and difficult to interpret.
 
@@ -208,7 +208,7 @@ plot(pruned.hitters, compress = T, uniform = TRUE, margin = .1, main = "Pruned T
 text(pruned.hitters, cex = .5)
 ```
 
-![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+(Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 This plot shows the tree after it has been pruned. It is much cleaner
 and easier to interpret with fewer variables.
 
@@ -277,7 +277,7 @@ importance(rf.hitters)
 varImpPlot(rf.hitters, main = "Variable Importance to Predict Hitters' Salary")
 ```
 
-![](Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+(Graphs&Images/Decision-Tree---Random-Forest-on-Hitters-Salary-Data_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 Based on the variable importance table and plot, there are three main
 groupings that the variables fall into. The first chunk that categorizes the
