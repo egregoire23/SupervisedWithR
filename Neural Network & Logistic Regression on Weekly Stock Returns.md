@@ -1,7 +1,9 @@
-Neural Network on Weekly Stock Returns
+Neural Network & Logistic Regression on Weekly Stock Returns
 ================
-Erin Gregoire
+Erin Gregoire,
 December 2024
+
+In this mini-project, I fit a neural network to the weekly stock return data to predict whether the direction is positive or negative in a given week. To compare the performance of the neural network to a baseline, I also constructed a logistic regression model.
 
 Preprocessing & Exploratory Data Analysis:
 
@@ -123,7 +125,7 @@ legend("bottomleft", legend=c("Training", "Test"), fill=c("blue", "red"))
 ```
 
 ![](Graphs&Images/Neural-Network-on-Weekly-Stock-Returns_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
-The model with the lowest test error rate is with 3 neurons in the
+The model with the lowest test error rate has 3 neurons in the
 hidden layer. Although this is not the lowest training error rate, we
 want to avoid overfitting.
 
@@ -202,7 +204,7 @@ After conducting these two models on the training data, it definitely
 looks as though the neural network will perform significantly better
 than the logistic regression. However, the test data for both models
 perform identically. In terms of model interpretability, the neural
-network loses significant interpretability with due to its complexity
+network loses significant interpretability due to its complexity
 and number of parameters. However, logistic regression is a very
 interpretable and easy to understand model. The logistic regression
 model shows that the most important variables in predicting whether the
