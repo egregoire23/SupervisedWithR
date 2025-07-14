@@ -8,7 +8,7 @@ popular dimensionality reduction techniques, forward and backward subset
 selection, lasso, and ridge by implementing them on the Motor Trend
 automobile data and evaluating their performance.
 
-Preprocessing & Exloratory Data Analysis:
+Preprocessing & Exploratory Data Analysis:
 
 ``` r
 data(mtcars)
@@ -85,7 +85,7 @@ variables may be correlated.
 plot(mtcars)
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
 This basic pairs plot shows a breakdown of how each variable relates to
 each other. This plot is a useful starting point to get a scope of which
@@ -95,7 +95,7 @@ variables should be further explored.
 boxplot(mtcars, main="Boxplot of MTCars Data", xlab="Features", ylab="Range")
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 This plot shows the distribution of each variable. In this mtcars data
 set, this boxplot simply shows that besides “disp” and “hp” we are
@@ -105,7 +105,7 @@ working with variables that have small distributions.
 hist(mtcars$mpg, main="Distribution of Vehicles' MPG")
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Since we will be predicting the MPG of cars in this data set, it is
 helpful to see a general breakdown of how the mpg is distributed across
@@ -115,7 +115,7 @@ the data set.
 plot(mtcars$am, mtcars$mpg, xlab = "Transmission", ylab = "MPG", main="Transmission Types by MPG")
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 This plot shows the distribution across Miles Per Gallon when the
 transmission is automatic (0) and when the transmission is manual (1).
@@ -126,7 +126,7 @@ automatic transmissions.
 plot(mtcars$vs, mtcars$mpg, xlab = "Engine", ylab = "MPG", main="Engine Types by MPG")
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 This plot shows the distributions of engines on MPG. 0 stands for
 V-shaped engines and 1 stands for straight engines. From this boxplot,
@@ -187,7 +187,7 @@ plot(fwd$rss, xlab = 'No. of variables', ylab = 'RSS', type = "b", main = "RSS o
 plot(fwd$adjr2, xlab = 'No. of variables', ylab = 'Adjusted Rsq', type = "b", main = "Adjusted RSq on Forward Subset Selection")
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 The forward subset selection model shows that the most important
 predictor variable is weight, followed by number of cylinders and gross
@@ -250,14 +250,14 @@ plot(bwd$rss, xlab = 'No. of variables', ylab = 'RSS', type = "b", main = "RSS o
 plot(bwd$adjr2, xlab = 'No. of variables', ylab = 'Adjusted RSq', type = "b", main = "Adjusted RSq on Backward Subset Selection")
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 Backwards subset selection shows that the most important predictor
 variables are weight, quarter mile time, having a manual transmission
 (am1), and horsepower. The predictor variable that has the least impact
 when predicting mpg is the number of cylinders, followed by having a
-straight engine and the number of carburetors. The performance
-indicators shows that a three or four variable model would demonstrate
+straight engine, and the number of carburetors. The performance
+indicators show that a three or four variable model would demonstrate
 parsimony.
 
 Fitting a Ridge Model:
@@ -291,9 +291,9 @@ dim(coef(ridge))
 plot(ridge, xvar = "lambda", main = "Ridge Model on MPG", label = TRUE)
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
-Taking a look at the first ridge model which contained 100 different
+Taking a look at the first ridge model, which contained 100 different
 values for lambda, we see that as lambda increases, the coefficients
 shrink towards zero. The coefficients for 2 and 3 (display and
 horsepower) remain very stable as lambda increases, meaning that it is
@@ -359,7 +359,7 @@ dim(coef(lasso))
 plot(lasso, xvar = "lambda", main = "LASSO Model on MPG", label = TRUE)
 ```
 
-![](Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](Graphs&Images/Dimension-Reduction-Techniques-on-Motor-Trend-Data_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 This graph shows that as lambda has a higher penalty and the predictor’s
 coefficients begin to shrink towards zero, the end result is a very
