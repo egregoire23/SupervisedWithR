@@ -7,7 +7,7 @@ Data Preprocessing, Classification, Regression, Model Evaluation, Visualization
 
 Dataset:
 
-Varies by mini-project
+Varies by project
 
 Methodology:
 - Preprocess and clean datasets
@@ -17,7 +17,7 @@ Methodology:
 
 Tools & Technologies:
 - Programming Language: R
-- Libraries: ggplot
+- Libraries: ggplot2, randomForest, glmnet, leaps, neuralnet, rpart, caret, MASS, factoextra, class
 - Software: R-Studio, Markdown
 
 Challenges & Learning:
